@@ -1,0 +1,69 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#060a18"><link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap"><link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/theme.css"><link rel="stylesheet" href="css/login.css"><script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js" defer></script><title>Login | Service Local Finder</title></head>
+<body class="auth-body"><a class="skip" href="#main">Skip to content</a>
+
+<div class="auth-scene" aria-hidden="true">
+  <div class="gp gp1" style="--k:26;--z:-120px;--rz:-12deg"><i></i></div>
+  <div class="gp gp2" style="--k:-38;--z:60px;--rz:9deg"><i></i></div>
+  <div class="gp gp3" style="--k:20;--z:-220px;--rz:18deg"><i></i></div>
+  <div class="gp gp4" style="--k:-30;--z:120px;--rz:-6deg"><i></i></div>
+  <div class="gp ring r1" style="--k:44;--z:-60px;--rz:0deg"><i></i></div>
+  <div class="gp ring r2" style="--k:-22;--z:-160px;--rz:0deg"><i></i></div>
+  <div class="gp sphere" style="--k:-50;--z:140px;--rz:0deg"><i></i></div>
+</div>
+
+<main id="main" class="auth-wrap">
+  <a class="back-home" href="index.html"><i data-lucide="arrow-left" aria-hidden="true"></i>Back to home</a>
+
+  <section class="auth-card" data-tilt="4" aria-labelledby="auth-title">
+    <a class="logo auth-logo" href="index.html"><i data-lucide="map-pinned" aria-hidden="true"></i>Service Local <b>Finder</b></a>
+    <p id="mode-badge" class="mode-badge" role="status">Checking login server…</p>
+
+    <div id="guest-view">
+      <h1 id="auth-title">Login</h1>
+      <p class="muted" id="auth-sub">Sign in with your mobile number to prefill your details when you send an enquiry.</p>
+
+      <form id="auth-form" class="auth-form" novalidate>
+        <div class="field" id="f-name" hidden>
+          <label for="name">Your name</label>
+          <div class="iw"><i data-lucide="user-round" aria-hidden="true"></i><input id="name" autocomplete="name" placeholder="Full name" aria-describedby="e-name"></div>
+          <p class="err" id="e-name" role="alert"></p>
+        </div>
+        <div class="field">
+          <label for="phone">Mobile number</label>
+          <div class="iw"><i data-lucide="smartphone" aria-hidden="true"></i><input id="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="98XXXXXXXX" required aria-describedby="e-phone"></div>
+          <p class="err" id="e-phone" role="alert"></p>
+        </div>
+        <div class="field">
+          <label for="pw">Password</label>
+          <div class="iw"><i data-lucide="lock-keyhole" aria-hidden="true"></i><input id="pw" type="password" autocomplete="current-password" placeholder="Your password" required aria-describedby="pw-hint e-pw"><button class="eye" id="pw-toggle" type="button" aria-label="Show password" aria-pressed="false"><i data-lucide="eye" aria-hidden="true"></i></button></div>
+          <p class="small muted" id="pw-hint" hidden>At least 8 characters.</p>
+          <p class="err" id="e-pw" role="alert"></p>
+        </div>
+        <div class="row-between">
+          <label class="check"><input type="checkbox" id="remember"><span>Remember my mobile number</span></label>
+          <button type="button" class="link-btn" id="forgot">Forgot password?</button>
+        </div>
+        <p id="auth-err" class="notice bad" role="alert" hidden></p>
+        <button class="btn btn-primary lg block" id="auth-submit" type="submit"><span class="spin" aria-hidden="true"></span><span class="lbl">Login</span></button>
+        <button class="btn btn-ghost block" id="auth-switch" type="button">New here? Create an account</button>
+      </form>
+      <p class="auth-foot small muted">Staff? <a href="admin.html">Admin sign-in</a></p>
+    </div>
+
+    <div id="user-view" hidden>
+      <h1 class="h-md">Hi, <span id="u-name"></span></h1>
+      <p class="muted">You are signed in as <b id="u-phone"></b>. Your name and number are prefilled on the enquiry form.</p>
+      <p id="u-local" class="notice" hidden>This account is saved in this browser only (the login server was not available).</p>
+      <div class="user-actions"><a class="btn btn-primary" href="providers.html"><i data-lucide="search" aria-hidden="true"></i>Find a Service</a> <a class="btn btn-ghost" href="track.html"><i data-lucide="route" aria-hidden="true"></i>Track an enquiry</a> <a class="btn btn-ghost" href="index.html"><i data-lucide="house" aria-hidden="true"></i>Home</a> <button class="btn btn-ghost" id="logout" type="button"><i data-lucide="log-out" aria-hidden="true"></i>Logout</button></div>
+    </div>
+  </section>
+</main>
+
+<dialog id="forgot-dialog" aria-labelledby="fg-title"><div class="dlg-body">
+  <div class="dlg-head"><h2 id="fg-title" class="h-sm">Forgot your password?</h2><button class="x-btn" type="button" id="fg-close" aria-label="Close"><i data-lucide="x" aria-hidden="true"></i></button></div>
+  <p>Self-service password reset is not built yet: it needs a verified SMS or email channel, which this project does not have.</p>
+  <p class="muted">For now, email <a href="mailto:support@servicelocalfinder.example?subject=Password%20reset">support@servicelocalfinder.example</a> from the address you signed up with, or create a new account with a different mobile number.</p>
+  <div class="cta-row" style="margin:0"><button class="btn btn-primary" type="button" id="fg-ok">Got it</button></div>
+</div></dialog>
+
+<script type="module" src="js/login.js"></script></body></html>

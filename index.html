@@ -1,0 +1,66 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#060a18"><link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap"><link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/theme.css"><script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js" defer></script><title>Service Local Finder | Trusted local services near you</title><meta name="description" content="Find electricians, plumbers, tutors and repair technicians in your locality."></head>
+<body><a class="skip" href="#main">Skip to content</a>
+<header id="site-header"></header>
+<main id="main">
+
+<section class="hero"><div class="wrap hero-grid">
+  <div class="hero-in">
+    <span class="badge"><i aria-hidden="true"></i>Demo directory for Greater Noida</span>
+    <h1>Find Trusted Local Services Near You</h1>
+    <p class="lead">Compare electricians, plumbers, tutors and repair technicians in your locality, then send an enquiry in a minute.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary lg" href="providers.html"><i data-lucide="compass" aria-hidden="true"></i>Browse providers</a>
+      <a class="btn btn-ghost lg" href="#how"><i data-lucide="play-circle" aria-hidden="true"></i>How it works</a>
+    </div>
+    <form id="home-search" class="search" action="providers.html" method="get" role="search">
+      <div><label for="hq">Service</label><input id="hq" name="q" type="search" placeholder="e.g. AC repair, plumber" autocomplete="off"></div>
+      <div><label for="hloc">Locality</label><input id="hloc" name="loc" list="locality-list" placeholder="e.g. Alpha 1" autocomplete="off"><datalist id="locality-list"></datalist></div>
+      <button class="btn btn-amber" type="submit"><i data-lucide="search" aria-hidden="true"></i>Search</button>
+    </form>
+    <nav class="qchips" aria-label="Popular searches"><span>Popular:</span>
+      <a href="providers.html?q=AC%20repair">AC repair</a><a href="providers.html?cat=plumber">Plumber</a><a href="providers.html?cat=electrician">Electrician</a><a href="providers.html?q=maths">Maths tutor</a><a href="providers.html?q=fridge">Fridge repair</a>
+    </nav>
+  </div>
+  <div class="scene" aria-hidden="true"><div class="scene-in">
+    <span class="glow"></span>
+    <div class="cube"><div class="face f1"><i data-lucide="zap"></i></div><div class="face f2"><i data-lucide="droplets"></i></div><div class="face f3"><i data-lucide="graduation-cap"></i></div><div class="face f4"><i data-lucide="wrench"></i></div><div class="face f5"><i data-lucide="map-pin"></i></div><div class="face f6"><i data-lucide="star"></i></div></div>
+    <span class="tile t1"><i data-lucide="zap"></i></span><span class="tile t2"><i data-lucide="droplets"></i></span><span class="tile t3"><i data-lucide="graduation-cap"></i></span><span class="tile t4"><i data-lucide="wrench"></i></span>
+    <span class="chip3d c1">4.9 ★ top rated (sample)</span><span class="chip3d c2">Greater Noida</span><span class="ring"></span>
+  </div></div>
+</div></section>
+
+<section class="wrap" aria-label="Directory at a glance" data-reveal><div class="card stats" id="stats-strip"></div></section>
+
+<section class="section wrap" aria-labelledby="cats"><div class="section-head" data-reveal><h2 id="cats">Popular categories</h2><p class="muted">Pick a trade for details, then see the providers in your area.</p></div>
+<div class="cats" id="cat-grid"></div></section>
+
+<section class="section wrap" aria-labelledby="feat"><div class="row-head" data-reveal><div><h2 id="feat">Top-rated providers</h2><p class="muted">Highest-rated sample providers in Greater Noida.</p></div><a class="btn btn-ghost" href="providers.html">See all providers</a></div>
+<div id="featured" class="grid"><div class="sk"></div><div class="sk"></div><div class="sk"></div></div></section>
+
+<section class="band" id="how" aria-labelledby="how-h"><div class="wrap"><div class="section-head" data-reveal><h2 id="how-h">How it works</h2><p class="muted">Four short steps from search to a saved booking request.</p></div>
+<ol class="steps"><li data-reveal><i data-lucide="search"></i><h3>Search</h3><p>Enter the service and your locality.</p></li><li data-reveal><i data-lucide="sliders-horizontal"></i><h3>Compare</h3><p>Filter by rating, price and experience.</p></li><li data-reveal><i data-lucide="user-search"></i><h3>Review the profile</h3><p>Check the service area, availability and starting price.</p></li><li data-reveal><i data-lucide="calendar-check"></i><h3>Send an enquiry</h3><p>Share the job and a preferred time.</p></li></ol></div></section>
+
+<section class="section wrap" aria-labelledby="why"><div class="section-head" data-reveal><h2 id="why">Why people use Service Local Finder</h2></div>
+<div class="grid benefits">
+  <div class="benefit" data-reveal data-tilt="5"><span class="ico"><i data-lucide="wallet"></i></span><h3>Upfront price guide</h3><p>Every profile shows an indicative starting price.</p></div>
+  <div class="benefit" data-reveal data-tilt="5"><span class="ico"><i data-lucide="phone"></i></span><h3>Direct contact</h3><p>Call or message providers without a middleman.</p></div>
+  <div class="benefit" data-reveal data-tilt="5"><span class="ico"><i data-lucide="map-pin"></i></span><h3>Hyperlocal</h3><p>Filter by the locality you live in.</p></div>
+  <div class="benefit" data-reveal data-tilt="5"><span class="ico"><i data-lucide="shield-alert"></i></span><h3>No fake badges</h3><p>A provider is never marked verified unless a real check has been done.</p></div>
+</div></section>
+
+<section class="section wrap" aria-labelledby="rev-h"><div class="section-head" data-reveal><h2 id="rev-h">What customers say</h2><p class="muted"><span class="demo-tag">Demo content</span> These reviews are fictional samples written for this demo, not real customer feedback.</p></div>
+<div class="reviews" id="reviews"></div></section>
+
+<section class="section wrap" aria-labelledby="cta-h"><div class="cta-panel" data-reveal><h2 id="cta-h">Ready to find a local pro?</h2><p>Search by service and locality, compare sample providers and save your booking request.</p>
+<div class="cta-row"><a class="btn btn-primary lg" href="providers.html"><i data-lucide="search" aria-hidden="true"></i>Find a service</a><a class="btn btn-ghost lg" href="login.html"><i data-lucide="user-round" aria-hidden="true"></i>Login or sign up</a></div></div></section>
+</main>
+
+<dialog id="cat-dialog" class="cat-modal" aria-labelledby="cd-title"><div class="dlg-body">
+  <div class="dlg-head"><div><h2 id="cd-title"></h2><p class="muted" id="cd-blurb" style="margin:0"></p></div><button class="x-btn" type="button" id="cd-close" aria-label="Close details"><i data-lucide="x" aria-hidden="true"></i></button></div>
+  <div class="kv" id="cd-kv"></div>
+  <div><h3 class="h-sm">Top-rated in this category</h3><ul class="mini-list" id="cd-list"></ul></div>
+  <div class="cta-row" style="margin:0"><a class="btn btn-primary" id="cd-all" href="providers.html"><i data-lucide="arrow-right" aria-hidden="true"></i>See all providers</a><button class="btn btn-ghost" type="button" id="cd-close2">Close</button></div>
+</div></dialog>
+
+<footer id="site-footer"></footer>
+<script type="module" src="js/app.js"></script></body></html>

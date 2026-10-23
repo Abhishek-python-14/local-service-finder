@@ -1,0 +1,139 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#060a18"><link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap"><link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/theme.css"><link rel="stylesheet" href="css/login.css"><link rel="stylesheet" href="css/admin.css"><script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js" defer></script><title>Admin | Service Local Finder</title></head>
+<body class="adm-body"><a class="skip" id="skip" href="#main">Skip to content</a>
+
+<!-- ===== sign in ===== -->
+<section id="login-view" class="auth-wrap adm-login">
+  <a class="back-home" href="index.html"><i data-lucide="arrow-left" aria-hidden="true"></i>Back to home</a>
+  <div id="main" class="auth-card" data-tilt="4" tabindex="-1">
+    <a class="logo auth-logo" href="index.html"><i data-lucide="map-pinned" aria-hidden="true"></i>Service Local <b>Finder</b></a>
+    <h1 class="h-md">Admin sign in</h1>
+    <p class="muted">Enter the admin key you set when starting the server (the <code>ADMIN_KEY</code> setting). The server checks it on every request.</p>
+    <form id="login" class="auth-form" novalidate>
+      <div class="field"><label for="key">Admin key</label><div class="iw"><i data-lucide="key-round" aria-hidden="true"></i><input id="key" type="password" autocomplete="current-password" required aria-describedby="login-err"><button class="eye" id="key-toggle" type="button" aria-label="Show admin key" aria-pressed="false"><i data-lucide="eye" aria-hidden="true"></i></button></div></div>
+      <p id="login-err" class="notice bad" role="alert" hidden></p>
+      <button class="btn btn-primary lg block" id="login-btn" type="submit"><span class="spin" aria-hidden="true"></span><span class="lbl">Open admin</span></button>
+      <button id="local-btn" class="btn btn-ghost block" type="button" hidden>Open local demo mode (this browser only)</button>
+    </form>
+    <p class="auth-foot small muted"><a href="login.html">Customer login</a> · <a href="index.html">Website</a></p>
+  </div>
+</section>
+
+<!-- ===== dashboard ===== -->
+<div id="admin-view" class="adm-shell" hidden>
+  <aside id="sidebar" class="sidebar" aria-label="Admin sections">
+    <a class="logo sb-logo" href="index.html" title="Back to the website"><i data-lucide="map-pinned" aria-hidden="true"></i><span class="sb-t">Service Local <b>Finder</b></span></a>
+    <nav class="sb-nav" id="sb-nav">
+      <button type="button" data-view="overview" title="Overview"><i data-lucide="layout-dashboard" aria-hidden="true"></i><span class="sb-t">Overview</span></button>
+      <button type="button" data-view="enquiries" title="Bookings and enquiries"><i data-lucide="calendar-check" aria-hidden="true"></i><span class="sb-t">Enquiries</span><em class="sb-n" id="n-enq"></em></button>
+      <button type="button" data-view="providers" title="Service providers"><i data-lucide="hard-hat" aria-hidden="true"></i><span class="sb-t">Providers</span><em class="sb-n" id="n-prov"></em></button>
+      <button type="button" data-view="users" title="Customers"><i data-lucide="users" aria-hidden="true"></i><span class="sb-t">Users</span><em class="sb-n" id="n-usr"></em></button>
+      <button type="button" data-view="categories" title="Service categories"><i data-lucide="layers" aria-hidden="true"></i><span class="sb-t">Categories</span></button>
+    </nav>
+    <div class="sb-foot">
+      <a href="index.html" title="View website"><i data-lucide="globe" aria-hidden="true"></i><span class="sb-t">View website</span></a>
+      <a href="login.html" title="Customer login"><i data-lucide="user-round" aria-hidden="true"></i><span class="sb-t">Customer login</span></a>
+      <button type="button" class="js-logout" id="logout" title="Sign out"><i data-lucide="log-out" aria-hidden="true"></i><span class="sb-t">Sign out</span></button>
+    </div>
+  </aside>
+  <div class="sb-scrim" id="sb-scrim"></div>
+
+  <div class="adm-main">
+    <header class="topbar">
+      <button class="x-btn" id="sb-toggle" type="button" aria-label="Collapse sidebar" aria-expanded="true" aria-controls="sidebar"><i data-lucide="panel-left" aria-hidden="true"></i></button>
+      <h1 id="view-title" tabindex="-1">Overview</h1>
+      <div class="top-actions">
+        <button class="btn btn-ghost" id="sample-btn" type="button" aria-pressed="false" title="Fill the dashboard with fictional records to preview charts and tables"><i data-lucide="flask-conical" aria-hidden="true"></i><span class="hide-sm">Sample data</span></button>
+        <div class="dd"><button class="x-btn" id="bell" type="button" aria-label="Notifications" aria-haspopup="true" aria-expanded="false"><i data-lucide="bell" aria-hidden="true"></i><span class="bell-n" id="bell-n" hidden>0</span></button><div class="menu" id="bell-menu" hidden></div></div>
+        <div class="dd"><button class="profile-btn" id="profile-btn" type="button" aria-haspopup="true" aria-expanded="false"><span class="av" aria-hidden="true">A</span><span class="hide-sm">Admin</span><i data-lucide="chevron-down" aria-hidden="true"></i></button>
+          <div class="menu" id="profile-menu" hidden><a href="index.html"><i data-lucide="globe" aria-hidden="true"></i>View website</a><a href="login.html"><i data-lucide="user-round" aria-hidden="true"></i>Customer login</a><button type="button" class="js-logout"><i data-lucide="log-out" aria-hidden="true"></i>Sign out</button></div></div>
+      </div>
+    </header>
+
+    <main id="main-admin" class="adm-content" tabindex="-1">
+      <p id="local-banner" class="notice" hidden>Local demo mode: you are seeing only the enquiries saved in this browser. Start the Node server with an admin key to see server enquiries.</p>
+      <p id="sample-banner" class="notice warn" role="status" hidden><b>Sample data.</b> These records are fictional and generated in your browser for demonstration. They are not live data, and nothing you change here is saved.</p>
+
+      <!-- Overview -->
+      <section data-panel="overview" aria-label="Overview">
+        <div class="kpis" id="kpis"></div>
+        <div class="chart-grid">
+          <article class="card chart-card" data-tilt="3"><h2 class="h-sm">Enquiries by category</h2><div id="ch-cat"></div></article>
+          <article class="card chart-card" data-tilt="3"><h2 class="h-sm">Enquiry activity, last 7 days</h2><div id="ch-days"></div></article>
+          <article class="card chart-card" data-tilt="3"><h2 class="h-sm">Provider performance</h2><p class="small muted" style="margin:0 0 .6rem">Enquiries per provider. Ratings are sample data.</p><div id="ch-prov"></div></article>
+        </div>
+        <article class="card pad"><div class="row-head"><h2 class="h-sm" style="margin:0">Recent enquiries</h2><button class="btn btn-ghost" type="button" data-go="enquiries">See all</button></div><div id="t-recent"></div></article>
+        <p class="notice sec-note"><i data-lucide="shield-check" aria-hidden="true"></i><span><b>How access is protected.</b> Every request to the admin API must carry the server’s <code>ADMIN_KEY</code>, and the server rejects anything else. Hiding this page or checking a role in JavaScript would not be security. Set your own key and serve over HTTPS before going online.</span></p>
+      </section>
+
+      <!-- Enquiries (booking status management) -->
+      <section data-panel="enquiries" aria-label="Enquiries" hidden>
+        <div class="row-head"><p class="muted small" style="margin:0">Requests saved on your server. Providers are never notified from here.</p>
+          <div class="actions-row" style="margin:0"><button id="add" class="btn btn-primary" type="button"><i data-lucide="plus" aria-hidden="true"></i>Add enquiry</button><button id="refresh" class="btn btn-ghost" type="button"><i data-lucide="refresh-cw" aria-hidden="true"></i>Refresh</button><button id="export" class="btn btn-ghost" type="button"><i data-lucide="download" aria-hidden="true"></i>Export CSV</button></div></div>
+        <form id="adm-filters" class="card filters toolbar" role="search" aria-label="Filter enquiries">
+          <div class="span2"><label for="f-q">Search</label><input id="f-q" type="search" placeholder="Reference, name, phone or job"></div>
+          <div><label for="f-status">Status</label><select id="f-status"><option value="">All</option></select></div>
+          <div><label for="f-prov">Provider</label><select id="f-prov"><option value="">All</option></select></div>
+          <div class="end"><button id="f-reset" class="btn btn-ghost" type="button"><i data-lucide="rotate-ccw" aria-hidden="true"></i>Reset</button></div>
+        </form>
+        <p id="adm-count" class="muted count" role="status" aria-live="polite"></p>
+        <div id="t-enq"></div>
+      </section>
+
+      <!-- Providers -->
+      <section data-panel="providers" aria-label="Service providers" hidden>
+        <div class="row-head"><p class="notice" id="prov-note" style="margin:0"><i data-lucide="info" aria-hidden="true"></i><span></span></p><button id="prov-add" class="btn btn-primary" type="button" hidden><i data-lucide="plus" aria-hidden="true"></i>Add provider</button></div>
+        <form id="prov-filters" class="card filters toolbar" role="search" aria-label="Filter providers">
+          <div class="span2"><label for="p-q">Search</label><input id="p-q" type="search" placeholder="Name, service or locality"></div>
+          <div><label for="p-cat">Category</label><select id="p-cat"><option value="">All</option></select></div>
+          <div class="end"><button id="p-reset" class="btn btn-ghost" type="button"><i data-lucide="rotate-ccw" aria-hidden="true"></i>Reset</button></div>
+        </form>
+        <div id="t-prov"></div>
+      </section>
+
+      <!-- Users -->
+      <section data-panel="users" aria-label="Customers" hidden>
+        <p id="usr-note" class="notice"><i data-lucide="info" aria-hidden="true"></i><span>Customer accounts created on the login page. Passwords are never shown or sent to this panel.</span></p>
+        <form id="usr-filters" class="card filters toolbar" role="search" aria-label="Filter customers">
+          <div class="span2"><label for="u-q">Search</label><input id="u-q" type="search" placeholder="Name or mobile number"></div>
+          <div class="end"><button id="u-reset" class="btn btn-ghost" type="button"><i data-lucide="rotate-ccw" aria-hidden="true"></i>Reset</button></div>
+        </form>
+        <div id="t-usr"></div>
+      </section>
+
+      <!-- Categories -->
+      <section data-panel="categories" aria-label="Service categories" hidden>
+        <div class="row-head"><p class="notice" id="cat-note" style="margin:0"><i data-lucide="info" aria-hidden="true"></i><span></span></p><button id="cat-add" class="btn btn-primary" type="button" hidden><i data-lucide="plus" aria-hidden="true"></i>Add category</button></div>
+        <div id="t-cat"></div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<!-- add / edit enquiry -->
+<dialog id="adm-dialog" class="adm-dialog" aria-labelledby="fm-title">
+  <form id="adm-form" class="form" novalidate style="margin:0">
+    <div class="dlg-head"><h2 id="fm-title" class="h-sm">Add enquiry</h2><button class="x-btn" type="button" id="fm-x" aria-label="Close"><i data-lucide="x" aria-hidden="true"></i></button></div>
+    <div class="field"><label for="fm-provider">Provider</label><select id="fm-provider" required><option value="">Select a provider</option></select></div>
+    <div class="two">
+      <div class="field"><label for="fm-name">Customer name</label><input id="fm-name" autocomplete="off" required></div>
+      <div class="field"><label for="fm-phone">Customer mobile</label><input id="fm-phone" type="tel" inputmode="tel" placeholder="98XXXXXXXX" autocomplete="off" required></div>
+    </div>
+    <div class="field"><label for="fm-desc">Job</label><textarea id="fm-desc" rows="3" maxlength="500" required></textarea></div>
+    <div class="two">
+      <div class="field"><label for="fm-loc">Address or locality</label><input id="fm-loc" autocomplete="off" required></div>
+      <div class="field"><label for="fm-when">Date and time (India time)</label><input id="fm-when" type="datetime-local" required></div>
+    </div>
+    <div class="two">
+      <div class="field"><label for="fm-status">Status</label><select id="fm-status"></select></div>
+      <div class="field"><label for="fm-note">Private note</label><input id="fm-note" maxlength="300" autocomplete="off"></div>
+    </div>
+    <div id="fm-err" class="notice bad" role="alert" hidden></div>
+    <div class="step-nav"><button id="fm-cancel" class="btn btn-ghost" type="button">Cancel</button><button id="fm-save" class="btn btn-primary" type="submit">Save</button></div>
+  </form>
+</dialog>
+<!-- generic details -->
+<dialog id="view-dialog" class="adm-dialog" aria-labelledby="vw-title"><div class="dlg-body"><div class="dlg-head"><h2 id="vw-title" class="h-sm"></h2><button class="x-btn" type="button" id="vw-x" aria-label="Close"><i data-lucide="x" aria-hidden="true"></i></button></div><div id="vw-body" class="vw-body"></div></div></dialog>
+<!-- confirm -->
+<dialog id="confirm-dialog" class="adm-dialog confirm" aria-labelledby="cf-title" aria-describedby="cf-msg"><div class="dlg-body"><div class="cf-ico" aria-hidden="true"><i data-lucide="triangle-alert"></i></div><h2 id="cf-title" class="h-sm"></h2><p id="cf-msg" class="muted" style="margin:0"></p><div class="step-nav"><button class="btn btn-ghost" type="button" id="cf-no">Cancel</button><button class="btn btn-primary danger-fill" type="button" id="cf-yes">Delete</button></div></div></dialog>
+
+<script type="module" src="js/admin.js"></script></body></html>

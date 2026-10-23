@@ -1,0 +1,73 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#060a18"><link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap"><link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/theme.css"><script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js" defer></script><title>Book a slot | Service Local Finder</title></head>
+<body><a class="skip" href="#main">Skip to content</a><header id="site-header"></header>
+<main id="main" class="wrap book section">
+<section id="form-view">
+  <h1 class="h-md">Book a slot</h1>
+  <p class="muted">Pick a job and a time in the provider's working hours. Your request is saved first. It is not sent to the provider and nothing is confirmed until you contact them.</p>
+
+  <ol id="stepper" class="stepper" aria-label="Booking steps"></ol>
+
+  <div class="book-grid">
+    <form id="enq-form" class="card form" novalidate>
+      <!-- Step 1 -->
+      <fieldset class="step" data-step="1">
+        <legend><h2 class="h-sm" tabindex="-1">1. Choose the provider and the job</h2></legend>
+        <div class="field"><label for="provider">Provider</label><select id="provider" required aria-describedby="e-providerId"></select><p class="err" id="e-providerId" role="alert"></p></div>
+        <div id="service-box" class="field" hidden>
+          <p class="label" id="service-label">What do you need?</p>
+          <div id="services" class="options" role="radiogroup" aria-labelledby="service-label" aria-describedby="e-service"></div>
+          <p class="err" id="e-service" role="alert"></p>
+        </div>
+      </fieldset>
+
+      <!-- Step 2 -->
+      <fieldset class="step" data-step="2" hidden>
+        <legend><h2 class="h-sm" tabindex="-1">2. Pick a day and a start time</h2></legend>
+        <p id="hours-note" class="small muted"></p>
+        <div class="field"><p class="label" id="day-label">Day</p><div id="days" class="chips-scroll" role="group" aria-labelledby="day-label"></div></div>
+        <div class="field"><p class="label" id="time-label">Start time (India time)</p><div id="times" class="slot-grid" role="group" aria-labelledby="time-label"></div></div>
+        <p class="err" id="e-when" role="alert"></p>
+      </fieldset>
+
+      <!-- Step 3 -->
+      <fieldset class="step" data-step="3" hidden>
+        <legend><h2 class="h-sm" tabindex="-1">3. Your details</h2></legend>
+        <div class="two">
+          <div class="field"><label for="name">Your name</label><input id="name" autocomplete="name" required aria-describedby="e-name"><p class="err" id="e-name" role="alert"></p></div>
+          <div class="field"><label for="phone">Mobile number</label><input id="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="98XXXXXXXX" required aria-describedby="e-phone"><p class="err" id="e-phone" role="alert"></p></div>
+        </div>
+        <div class="field"><label for="locality">Address or locality for the visit</label><input id="locality" autocomplete="street-address" required aria-describedby="e-locality"><p class="err" id="e-locality" role="alert"></p></div>
+        <div class="field"><label for="notes">Anything the provider should know? <span class="muted">(optional)</span></label><textarea id="notes" rows="3" maxlength="350" aria-describedby="e-description"></textarea><p class="err" id="e-description" role="alert"></p></div>
+        <div class="field check"><input id="consent" type="checkbox" aria-describedby="e-consent"><label for="consent">I agree to be contacted about this request.</label><p class="err" id="e-consent" role="alert"></p></div>
+      </fieldset>
+
+      <!-- Step 4 -->
+      <fieldset class="step" data-step="4" hidden>
+        <legend><h2 class="h-sm" tabindex="-1">4. Check and save</h2></legend>
+        <dl id="review" class="review-list"></dl>
+        <p class="notice">Saving creates a reference number. You then send the request to the provider yourself on WhatsApp.</p>
+      </fieldset>
+
+      <p id="form-error" class="notice bad" role="alert" hidden></p>
+      <div class="step-nav">
+        <button id="back" class="btn btn-ghost" type="button" hidden>Back</button>
+        <button id="next" class="btn btn-primary" type="button">Continue</button>
+        <button id="submit" class="btn btn-amber" type="submit" hidden>Save booking request</button>
+      </div>
+    </form>
+
+    <aside id="summary" class="card summary" aria-label="Booking summary"></aside>
+  </div>
+</section>
+
+<section id="done-view" class="card done" hidden><h2 tabindex="-1">Booking request saved</h2>
+<p>Your reference: <strong id="ref" class="ref"></strong></p><p id="done-text"></p>
+<dl id="done-summary" class="review-list"></dl>
+<div id="done-actions" class="actions-row"></div>
+<button id="another" class="btn btn-ghost" type="button">Make another request</button></section>
+
+<section class="recent" aria-labelledby="rec"><h2 id="rec" class="h-sm">Saved in this browser</h2><p id="storage-note" class="notice bad" role="status" hidden></p><ul id="recent-list"></ul>
+<p class="small muted">Requests are saved in this browser only. They are not secure, not shared between devices, and can be cleared by you at any time.</p></section>
+</main>
+<footer id="site-footer"></footer>
+<script type="module" src="js/enquiry.js"></script></body></html>
